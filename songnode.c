@@ -32,6 +32,49 @@ struct song_node * insert_front(struct song_node * exm, char * song, char * arti
   return exm;
 }
 
+struct song_node * free_list(struct song_node * exm) {
+
+        struct song_node * ret = exm;
+        if (exm == NULL) {
+                printf("\n");
+        }
+        else {
+                free(exm);
+                free_list(exm->next);
+        }
+        return ret;
+
+}
+
+struct song_node * remove_node(struct song_node * front, char * s) {
+
+        struct song_node * ret = front;
+        struct song_node * temp;
+        struct song_node * temp2;
+	char * p;
+	p = front->song_name;
+        if (strcmp(p, s)) {
+                temp = front->next;
+                front->next = NULL;
+                return temp;
+        }
+        while(front->next) {
+                temp2 = front->next;
+		p = front->song_name;
+                if (strcmp(p, s)) {
+                        temp = front->next;
+                        front->next = temp2->next;
+                        free(temp);
+                }
+                else {
+                        front = front->next;
+                }
+
+        }
+        return ret;
+
+}
+
 int main(){
   return 0;
 }
