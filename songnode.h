@@ -8,6 +8,8 @@ struct song_node {
 
 struct song_node * insert_order(char * name, char * artist);
 
+void print_struct(struct song_node s);
+
 void print_list(struct song_node * start);
 
 struct linkednode * insert_front(struct song_node * exm, char * s, char * st);
