@@ -32,6 +32,36 @@ struct song_node * insert_front(struct song_node * exm, char * song, char * arti
   return exm;
 }
 
+struct song_node * greater_song_node(struct song_node * node1, struct song_node * node2) {
+
+	int artists = strcmp(node1->song_artist, node2->song_artist);
+	int songnames = strcmp(node1->song_name, node2->song_name);
+	if (artists < 0) {
+		return node2;
+	}
+	else if (artists > 0) {
+		return node1;
+	}
+	else {
+		if (songnames < 0) {
+			return node1;
+		}
+		else {
+			return node2;
+		}
+	}
+
+}
+
+//struct song_node * insert_order(char * name, char * artist) {
+
+	//I think this is going to be a problem, because we're making the song_node struct within the function?
+	//struct song_node * start = make(name, artist);
+	//struct song_node * ret = start;
+	
+
+//}
+
 struct song_node * free_list(struct song_node * exm) {
 
         struct song_node * ret = exm;
@@ -53,7 +83,7 @@ struct song_node * remove_node(struct song_node * front, char * s) {
         struct song_node * temp2;
 	char * p;
 	p = front->song_name;
-        if (strcmp(p, s)) {
+        if (!strcmp(p, s)) {
                 temp = front->next;
                 front->next = NULL;
                 return temp;
@@ -61,7 +91,7 @@ struct song_node * remove_node(struct song_node * front, char * s) {
         while(front->next) {
                 temp2 = front->next;
 		p = front->song_name;
-                if (strcmp(p, s)) {
+                if (!strcmp(p, s)) {
                         temp = front->next;
                         front->next = temp2->next;
                         free(temp);
