@@ -19,6 +19,17 @@ void print_list(struct song_node *s){
   }
 }
 
-struct song_node * insert_front(struct song_node * front){
+// struct song_node * make(char * song, char * artist){
+//   struct song_node * s = malloc(sizeof(struct song_node));
+//   s->song_name = malloc(strlen(song));
+//   strcpy(s->song_name,song);
+//   s->song_artist = malloc(strlen(artist));
+//   strcpy(s->song_artist,artist);
+//   return s;
+// }
 
+struct song_node * insert_front(struct song_node * exm, char * song, char * artist){
+  struct song_node *new = make(song,artist);
+  new->next = exm;
+  return exm;
 }
