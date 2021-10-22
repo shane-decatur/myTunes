@@ -26,10 +26,9 @@ struct song_node * make(char * song, char * artist){
   return s;
 }
 
-struct song_node * insert_front(struct song_node * exm, char * song, char * artist){
-  struct song_node *new = make(song,artist);
+struct song_node * insert_front(struct song_node * exm, struct song_node * new){
   new->next = exm;
-  return exm;
+  return new;
 }
 
 struct song_node * greater_song_node(struct song_node * node1, struct song_node * node2) {
@@ -64,7 +63,13 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 
 struct song_node * insert_order(struct song_node * front, struct song_node * node) {
 
-	
+	if (greater_song_node(front, node) == front) {
+		return insert_front(front, node);
+	}
+	while (front->next) {
+		front = front->next;
+		return insert_order()
+	}
 
 }
 
