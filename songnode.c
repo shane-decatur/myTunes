@@ -26,11 +26,6 @@ struct song_node * make(char * song, char * artist){
   return s;
 }
 
-struct song_node * insert_front(struct song_node * exm, struct song_node * new){
-  new->next = exm;
-  return new;
-}
-
 struct song_node * greater_song_node(struct song_node * node1, struct song_node * node2) {
 
 	int artists = strcmp(node1->song_artist, node2->song_artist);
