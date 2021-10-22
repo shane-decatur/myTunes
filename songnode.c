@@ -44,10 +44,10 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 	}
 	else {
 		if (songnames < 0) {
-			return node1;
+			return node2;
 		}
 		else {
-			return node2;
+			return node1;
 		}
 	}
 
@@ -61,6 +61,12 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 	
 
 //}
+
+struct song_node * insert_order(struct song_node * front, struct song_node * node) {
+
+	
+
+}
 
 struct song_node * free_list(struct song_node * exm) {
 

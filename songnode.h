@@ -6,7 +6,7 @@ struct song_node {
 
 };
 
-struct song_node * insert_order(char * name, char * artist);
+struct song_node * insert_order(struct song_node * front,  struct song_node * node);
 
 struct song_node * make(char * song, char * artist);
 
