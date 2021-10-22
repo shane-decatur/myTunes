@@ -58,7 +58,7 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 	//I think this is going to be a problem, because we're making the song_node struct within the function?
 	//struct song_node * start = make(name, artist);
 	//struct song_node * ret = start;
-	
+
 
 //}
 
