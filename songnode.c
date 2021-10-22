@@ -52,23 +52,30 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 
 }
 
-//struct song_node * insert_order(char * name, char * artist) {
-
-	//I think this is going to be a problem, because we're making the song_node struct within the function?
-	//struct song_node * start = make(name, artist);
-	//struct song_node * ret = start;
-
-
-//}
-
 struct song_node * insert_order(struct song_node * front, struct song_node * node) {
 
+	struct song_node * ret = front;
+	struct song_node * tempnext;
 	if (greater_song_node(front, node) == front) {
-		return insert_front(front, node);
+		node->next = front;
+		ret = node;
+		return ret;
 	}
-	while (front->next) {
-		front = front->next;
-		return insert_order()
+	else {
+		while(front->next) {
+			tempnext = front->next;
+			if (greater_song_node(tempnext, node) == tempnext) {
+				front->next = node;
+				node->next = tempnext;
+				return ret;
+			}
+			else {
+				front = front->next;
+			}
+
+		}
+		front->next = node;
+		return ret;
 	}
 
 }
