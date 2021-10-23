@@ -113,10 +113,7 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
 
 int size(struct song_node * front) {
 
-  int ret = 0;
-  if (front) {
-    ret++;
-  }
+  int ret = 1;
   while (front->next) {
     ret++;
     front = front->next;
