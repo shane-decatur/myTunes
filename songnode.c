@@ -144,7 +144,7 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
       return front;
     }
   }
-  return front;
+  return NULL;
 }
 
 // int main(){
