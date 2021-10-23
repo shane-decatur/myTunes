@@ -131,6 +131,19 @@ struct song_node * find_song(struct song_node * front, char * song, char * artis
   return NULL;
 }
 
+struct song_node * find_firstsong(struct song_node * front, char * artist){
+  if (!strcmp(front->song_artist,artist)){
+    return front;
+  }
+  while (front->next){
+    if (!strcmp(front->song_artist,artist)){
+      return front;
+    }
+    front = front->next;
+  }
+  return NULL;
+}
+
 int main(){
   return 0;
 }
