@@ -50,6 +50,13 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 
 }
 
+struct song_node * insert_front(struct song_node * front, struct song_node * node) {
+
+	node->next = front;
+	return node;
+
+}
+
 struct song_node * insert_order(struct song_node * front, struct song_node * node) {
 
 	struct song_node * ret = front;
@@ -92,7 +99,31 @@ struct song_node * free_list(struct song_node * exm) {
 
 }
 
-struct song_node * remove_node(struct song_node * front, char * s) {
+struct song_node * remove_node(struct song_node * front, char * songartist, char * songname) {
+
+	struct song_node * ret = front;
+	struct song_node * tempnext;
+	if (!strcmp(front->song_name, songname) && !strcmp(front->song_artist, songartist)) {
+		ret = front->next;
+		return ret;
+	}
+	else {
+		while (front->next) {
+			tempnext = front->next;
+			if (!strcmp(tempnext->song_name, songname) && !strcmp(tempnext->song_artist, songartist)) {
+				front->next = tempnext->next;
+				return ret;
+			}
+			else {
+				front = front->next;
+			}
+		}
+		return ret;
+	}
+
+}
+
+/*struct song_node * remove_node(struct song_node * front, char * s) {
 
         struct song_node * ret = front;
         struct song_node * temp;
@@ -119,7 +150,7 @@ struct song_node * remove_node(struct song_node * front, char * s) {
         }
         return ret;
 
-}
+}*/
 
 struct song_node * find_song(struct song_node * front, char * song, char * artist){
   if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
@@ -147,6 +178,6 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
   return NULL;
 }
 
-// int main(){
-//   return 0;
-// }
+/*int main(){
+  return 0;
+}*/
