@@ -27,4 +27,14 @@ int main(){
   list = insert_front(list, toadd);
   printf("\n");
   print_list(list);
+
+  // struct song_node * rando = find_randomsong(list);
+  struct song_node * rando = find_song(list, "The End Comes Soon", "Biley Renner");
+  printf("\n");
+  print_struct(rando);
+  printf("\n");
+  rando = find_randomsong(list);
+  printf("\n");
+  print_struct(rando);
+  printf("\n");
 }
