@@ -9,7 +9,7 @@ struct song_node {
 };
 
 void print_struct(struct song_node s){
-  printf("{%s, %s}\t",s.song_name,s.song_artist);
+  printf("{%s, %s}\t",s.song_artist,s.song_name);
 }
 
 void print_list(struct song_node *s){
@@ -126,10 +126,10 @@ struct song_node * find_song(struct song_node * front, char * song, char * artis
     return front;
   }
   while (front->next){
+    front = front->next;
     if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
       return front;
     }
-    front = front->next;
   }
   return NULL;
 }
