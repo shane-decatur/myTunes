@@ -9,13 +9,16 @@ struct song_node {
 };
 
 void print_struct(struct song_node s){
-  printf("%s by %s\n",s.song_name,s.song_artist);
+  printf("{%s, %s}\t",s.song_name,s.song_artist);
 }
 
 void print_list(struct song_node *s){
   print_struct(*s);
   if (s->next != NULL){
     print_list(s->next);
+  }
+  else{
+    printf("\n");
   }
 }
 
@@ -144,6 +147,6 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
   return NULL;
 }
 
-int main(){
-  return 0;
-}
+// int main(){
+//   return 0;
+// }
