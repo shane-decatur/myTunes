@@ -9,13 +9,16 @@ struct song_node {
 };
 
 void print_struct(struct song_node s){
-  printf("%s by %s\n",s.song_name,s.song_artist);
+  printf("{%s, %s}\t",s.song_artist,s.song_name);
 }
 
 void print_list(struct song_node *s){
   print_struct(*s);
   if (s->next != NULL){
     print_list(s->next);
+  }
+  else{
+    printf("\n");
   }
 }
 
@@ -118,6 +121,32 @@ struct song_node * remove_node(struct song_node * front, char * s) {
 
 }
 
-int main(){
-  return 0;
+struct song_node * find_song(struct song_node * front, char * song, char * artist){
+  if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
+    return front;
+  }
+  while (front->next){
+    front = front->next;
+    if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
+      return front;
+    }
+  }
+  return NULL;
 }
+
+struct song_node * find_firstsong(struct song_node * front, char * artist){
+  if (!strcmp(front->song_artist,artist)){
+    return front;
+  }
+  while (front->next){
+    front = front->next;
+    if (!strcmp(front->song_artist,artist)){
+      return front;
+    }
+  }
+  return NULL;
+}
+
+// int main(){
+//   return 0;
+// }
