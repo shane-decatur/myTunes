@@ -8,25 +8,18 @@ struct song_node {
   struct song_node * next;
 };
 
-void print_struct(struct song_node s){
-  printf("{%s, %s}\t",s.song_artist,s.song_name);
-}
-
-void print_list(struct song_node *s){
-  print_struct(*s);
-  if (s->next != NULL){
-    print_list(s->next);
-  }
-  else{
-    printf("\n");
-  }
-}
-
 struct song_node * make(char * song, char * artist){
   struct song_node * s = malloc(sizeof(struct song_node));
   strcpy(s->song_name,song);
   strcpy(s->song_artist,artist);
   return s;
+}
+
+struct song_node * insert_front(struct song_node * front, struct song_node * node) {
+
+	node->next = front;
+	return node;
+
 }
 
 struct song_node * greater_song_node(struct song_node * node1, struct song_node * node2) {
@@ -47,13 +40,6 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 			return node1;
 		}
 	}
-
-}
-
-struct song_node * insert_front(struct song_node * front, struct song_node * node) {
-
-	node->next = front;
-	return node;
 
 }
 
@@ -85,72 +71,19 @@ struct song_node * insert_order(struct song_node * front, struct song_node * nod
 
 }
 
-struct song_node * free_list(struct song_node * exm) {
-
-        struct song_node * ret = exm;
-        if (exm == NULL) {
-                printf("\n");
-        }
-        else {
-                free(exm);
-                free_list(exm->next);
-        }
-        return ret;
-
+void print_struct(struct song_node s){
+  printf("{%s, %s}\t",s.song_artist,s.song_name);
 }
 
-struct song_node * remove_node(struct song_node * front, char * songartist, char * songname) {
-
-	struct song_node * ret = front;
-	struct song_node * tempnext;
-	if (!strcmp(front->song_name, songname) && !strcmp(front->song_artist, songartist)) {
-		ret = front->next;
-		return ret;
-	}
-	else {
-		while (front->next) {
-			tempnext = front->next;
-			if (!strcmp(tempnext->song_name, songname) && !strcmp(tempnext->song_artist, songartist)) {
-				front->next = tempnext->next;
-				return ret;
-			}
-			else {
-				front = front->next;
-			}
-		}
-		return ret;
-	}
-
+void print_list(struct song_node *s){
+  print_struct(*s);
+  if (s->next != NULL){
+    print_list(s->next);
+  }
+  else{
+    printf("\n");
+  }
 }
-
-/*struct song_node * remove_node(struct song_node * front, char * s) {
-
-        struct song_node * ret = front;
-        struct song_node * temp;
-        struct song_node * temp2;
-	char * p;
-	p = front->song_name;
-        if (!strcmp(p, s)) {
-                temp = front->next;
-                front->next = NULL;
-                return temp;
-        }
-        while(front->next) {
-                temp2 = front->next;
-		p = front->song_name;
-                if (!strcmp(p, s)) {
-                        temp = front->next;
-                        front->next = temp2->next;
-                        free(temp);
-                }
-                else {
-                        front = front->next;
-                }
-
-        }
-        return ret;
-
-}*/
 
 struct song_node * find_song(struct song_node * front, char * song, char * artist){
   if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
@@ -178,6 +111,50 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
   return NULL;
 }
 
-/*int main(){
-  return 0;
-}*/
+// struct song_node * find_randomsong() {
+//
+//
+//
+// }
+
+struct song_node * remove_node(struct song_node * front, char * songartist, char * songname) {
+
+	struct song_node * ret = front;
+	struct song_node * tempnext;
+	if (!strcmp(front->song_name, songname) && !strcmp(front->song_artist, songartist)) {
+		ret = front->next;
+		return ret;
+	}
+	else {
+		while (front->next) {
+			tempnext = front->next;
+			if (!strcmp(tempnext->song_name, songname) && !strcmp(tempnext->song_artist, songartist)) {
+				front->next = tempnext->next;
+				return ret;
+			}
+			else {
+				front = front->next;
+			}
+		}
+		return ret;
+	}
+
+}
+
+struct song_node * free_list(struct song_node * exm) {
+
+        struct song_node * ret = exm;
+        if (exm == NULL) {
+                printf("\n");
+        }
+        else {
+                free(exm);
+                free_list(exm->next);
+        }
+        return ret;
+
+}
+
+// int main(){
+//   return 0;
+// }
