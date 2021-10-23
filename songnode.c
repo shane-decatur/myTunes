@@ -111,6 +111,15 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
   return NULL;
 }
 
+int size(struct song_node * front){
+  int i = 1;
+  while (front->next){
+    front = front->next;
+    i++;
+  }
+  return i;
+}
+
 // struct song_node * find_randomsong() {
 //
 //
