@@ -111,11 +111,38 @@ struct song_node * find_firstsong(struct song_node * front, char * artist){
   return NULL;
 }
 
-// struct song_node * find_randomsong() {
-//
-//
-//
-// }
+int size(struct song_node * front) {
+
+  int ret = 0;
+  if (front) {
+    ret++;
+  }
+  while (front->next) {
+    ret++;
+    front = front->next;
+  }
+  return ret;
+
+}
+
+struct song_node * find_randomsong(struct song_node * front) {
+
+  int max_size = size(front);
+  int rand_num = rand() % max_size;
+  int count = 0;
+  struct song_node * ret;
+  for (count; front->next && count < max_size; count++) {
+    if (count == rand_num) {
+      ret = front;
+      break;
+    }
+    else {
+      front = front->next;
+    }
+  }
+  return ret;
+
+}
 
 struct song_node * remove_node(struct song_node * front, char * songartist, char * songname) {
 

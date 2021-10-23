@@ -16,7 +16,7 @@ void print_list(struct song_node *s);
 
 struct song_node * find_firstsong(struct song_node * front, char * artist);
 
-
+struct song_node * find_randomsong(struct song_node * front);
 
 struct song_node * remove_node(struct song_node * front, char * songartist, char * songname);
 
