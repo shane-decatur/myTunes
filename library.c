@@ -29,10 +29,10 @@ void insert_song(struct song_library * thing, struct song_node * thing2) {
     }
   }
   if (found) {
-    insert_order((thing->lib)[count], thing2);
+    (thing->lib)[count][0] = insert_order((thing->lib)[count], thing2);
   }
   else {
-    insert_order((thing->lib)[26], thing2);
+    (thing->lib)[26][0] = insert_order((thing->lib)[26], thing2);
   }
 
 }
