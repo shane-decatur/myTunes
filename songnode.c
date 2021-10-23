@@ -118,6 +118,19 @@ struct song_node * remove_node(struct song_node * front, char * s) {
 
 }
 
+struct song_node * find_song(struct song_node * front, char * song, char * artist){
+  if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
+    return front;
+  }
+  while (front->next){
+    if (!strcmp(front->song_name,song) && !strcmp(front->song_artist,artist)){
+      return front;
+    }
+    front = front->next;
+  }
+  return NULL;
+}
+
 int main(){
   return 0;
 }
