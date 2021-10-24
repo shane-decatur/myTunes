@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "library.h"
+#include <time.h>
 #include "songnode.h"
 
 struct song_node {
@@ -102,8 +103,13 @@ void shuffle_songs(struct song_node ** main_lib) {
   struct song_node * ret;
   for (count; count < 5; count++) {
     int rando = rand() % 27;
-    ret = find_randomsong(main_lib[rando]);
-    print_struct(ret);
+    if (main_lib[rando] == NULL) {
+      count--;
+    }
+    else {
+      ret = find_randomsong(main_lib[rando]);
+      print_struct(ret);
+    }
   }
 
 }

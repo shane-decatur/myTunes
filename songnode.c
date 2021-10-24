@@ -131,9 +131,8 @@ int size(struct song_node * front) {
 
 struct song_node * find_randomsong(struct song_node * front) {
 
-  int max_size = size(front);
-  int rand_num = rand() % max_size;
-  while (rand_num) {
+  int rand_num = rand() % size(front);
+  while (rand_num > 0) {
     front = front->next;
     rand_num--;
   }

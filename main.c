@@ -49,10 +49,10 @@ int main(){
   print_artist(library, "ac/dc");
   printf("\n");
   printf("-------------------------------------------\n");
-  // printf("Finding 5 random songs\n");
-  // shuffle_songs(library);
-  // printf("\n");
-  // printf("-------------------------------------------\n");
+  printf("Finding 5 random songs\n");
+  shuffle_songs(library);
+  printf("\n");
+  printf("-------------------------------------------\n");
   printf("Deleting a song\n");
   remove_song(library, e);
   printf("\n");
