@@ -14,8 +14,10 @@ int main(){
   struct song_node *e = make("yellow ledbetter","pearl jam");
   struct song_node *f = make("time", "pink floyd");
   struct song_node *g = make("street spirit (fade out)","radiohead");
-
-  insert_song(library, a);
+  //
+  insert_song(library, b);
+  insert_song(library, g);
+  print_letter(library, 'r');
   // insert_song(library, b);
   // insert_song(library, c);
   // insert_song(library, d);
