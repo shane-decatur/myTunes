@@ -1,3 +1,5 @@
+struct song_node;
+
 struct song_library;
 
 struct song_library * make_lib();
