@@ -123,6 +123,17 @@ void print_artist(struct song_library * library, char * songartist) {
 
 }
 
+void print_library(struct song_library * library) {
+
+  char * alphabet = "abcdefghijklmnopqrstuvwxyz/";
+  int count = 0;
+  for (count; count < 27; count++) {
+    printf("letter: %c ", alphabet[count]);
+    print_list((library->lib)[count]);
+  }
+
+}
+
 // int main() {
 //   return 0;
 // }

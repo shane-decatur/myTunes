@@ -15,3 +15,5 @@ void print_letter(struct song_library * library, char let);
 void print_artist_from_songnode(struct song_node * front, char * songartist);
 
 void print_artist(struct song_library * library, char * songartist);
+
+void print_library(struct song_library * library);

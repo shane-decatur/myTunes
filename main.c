@@ -21,7 +21,7 @@ int main(){
   insert_song(library, h);
   print_letter(library, 'r');
   print_artist(library, "radiohead");
-
+  print_library(library);
   // insert_song(library, b);
   // insert_song(library, c);
   // insert_song(library, d);

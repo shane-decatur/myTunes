@@ -72,7 +72,9 @@ struct song_node * insert_order(struct song_node * front, struct song_node * nod
 }
 
 void print_struct(struct song_node * s){
-  printf("{%s, %s}\t",s->song_artist,s->song_name);
+  if (s->song_artist && s->song_name) {
+    printf("{%s, %s}\t",s->song_artist,s->song_name);
+  }
 }
 
 void print_list(struct song_node *s){
