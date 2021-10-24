@@ -2,7 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "library.h"
-#include "songnode.c"
+#include "songnode.h"
+
+struct song_node {
+  char song_name[100];
+  char song_artist[100];
+  struct song_node * next;
+};
 
 struct song_library{
   struct song_node ** lib;
@@ -11,6 +17,7 @@ struct song_library{
 struct song_library * make_lib() {
 
   struct song_library * ret = malloc(sizeof(struct song_node[27][1]));
+  return ret;
 
 }
 
@@ -29,10 +36,10 @@ void insert_song(struct song_library * thing, struct song_node * thing2) {
     }
   }
   if (found) {
-    (thing->lib)[count][0] = insert_order((thing->lib)[count], thing2);
+    (thing->lib)[count] = insert_order((thing->lib)[count], thing2);
   }
   else {
-    (thing->lib)[26][0] = insert_order((thing->lib)[26], thing2);
+    (thing->lib)[26] = insert_order((thing->lib)[26], thing2);
   }
 
 }
@@ -43,10 +50,10 @@ struct song_node * search_song(struct song_library * library, char * song, char 
   int count;
   for (count = 0; count < 26; count++){
     if (artist[0] == alphabet[count]){
-      return find_song(library[count],song,artist);
+      return find_song((library->lib)[count],song,artist);
     }
   }
-  return find_song(library[26],song,artist);
+  return find_song((library->lib)[26],song,artist);
 
 }
 
@@ -56,10 +63,10 @@ struct song_node * search_artist(struct song_library * library, char * artist){
   int count;
   for (count = 0; count < 26; count++){
     if (artist[0] == alphabet[count]){
-      return find_firstsong(library[count],artist);
+      return find_firstsong((library->lib)[count],artist);
     }
   }
-  return find_firstsong(library[26],artist);
+  return find_firstsong((library->lib)[26],artist);
 
 }
 

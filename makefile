@@ -1,8 +1,11 @@
-all: testnode.o songnode.o
-	gcc testnode.o songnode.o
+all: main.o library.o songnode.o
+	gcc main.o library.o songnode.o
 
-testnode.o: testnode.c songnode.h
-	gcc -c testnode.c
+main.o: main.c library.h
+	gcc -c main.c
+
+library.o: library.c library.h songnode.h
+	gcc -c library.c
 
 songnode.o: songnode.c songnode.h
 	gcc -c songnode.c
