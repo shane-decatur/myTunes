@@ -15,7 +15,7 @@ struct song_node ** make_lib() {
 
   struct song_node ** library = malloc(27 * sizeof(struct song_node));
   int i = 0;
-  for (i; i < 27; i++) {
+  for (i = 0; i < 27; i++) {
     library[i] = 0;
   }
   return library;
@@ -87,7 +87,7 @@ void print_artist(struct song_node ** main_lib, char * artist) {
 void print_library(struct song_node ** main_lib) {
 
   int count = 0;
-  for (count; count < 27; count++) {
+  for (count = 0; count < 27; count++) {
     if (main_lib[count]) {
       printf("letter %c: ", count + 97);
       print_list(main_lib[count]);
@@ -101,7 +101,7 @@ void shuffle_songs(struct song_node ** main_lib) {
   srand(time(NULL));
   int count = 0;
   struct song_node * ret;
-  for (count; count < 5; count++) {
+  for (count = 0; count < 5; count++) {
     int rando = rand() % 27;
     if (main_lib[rando] == NULL) {
       count--;
@@ -127,7 +127,7 @@ void remove_song(struct song_node ** main_lib, struct song_node * node) {
 void clearall(struct song_node ** main_lib) {
 
   int count = 0;
-  for (count; count < 27; count++) {
+  for (count = 0; count < 27; count++) {
     free_list(main_lib[count]);
     main_lib[count] = NULL;
   }
