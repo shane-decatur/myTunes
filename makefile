@@ -1,7 +1,7 @@
 all: main.o library.o songnode.o
 	gcc main.o library.o songnode.o
 
-main.o: main.c library.h
+main.o: main.c songnode.h library.h
 	gcc -c main.c
 
 library.o: library.c library.h songnode.h
