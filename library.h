@@ -11,3 +11,7 @@ struct song_node * search_song(struct song_library * library, char * song, char 
 struct song_node * search_artist(struct song_library * library, char * artist);
 
 void print_letter(struct song_library * library, char let);
+
+void print_artist_from_songnode(struct song_node * front, char * songartist);
+
+void print_artist(struct song_library * library, char * songartist);

@@ -16,7 +16,7 @@ struct song_library{
 
 struct song_library * make_lib() {
 
-  struct song_library * ret = malloc(sizeof(struct song_node[27][1]));
+  struct song_library * ret = malloc(sizeof(struct song_library));
   return ret;
 
 }
@@ -41,29 +41,6 @@ struct song_library * insert_song(struct song_library * main_lib, struct song_no
   return main_lib;
 
 }
-
-// void insert_song(struct song_library * thing, struct song_node * thing2) {
-//
-//   char * alphabet = "abcdefghijklmnopqrstuvwxyz/";
-//   char * songart = thing2->song_artist;
-//   char letter = songart[0];
-//   int count;
-//   char firstletter;
-//   int found = 0;
-//   for (count = 0; count < 26 && !found; count++) {
-//     firstletter = alphabet[count];
-//     if (firstletter == letter) {
-//       found = 1;
-//     }
-//   }
-//   if (found) {
-//     (thing->lib)[count] = insert_order((thing->lib)[count], thing2);
-//   }
-//   else {
-//     (thing->lib)[26] = insert_order((thing->lib)[26], thing2);
-//   }
-//
-// }
 
 struct song_node * search_song(struct song_library * library, char * song, char * artist){
 
@@ -96,15 +73,53 @@ void print_letter(struct song_library * library, char let) {
   char * alphabet = "abcdefghijklmnopqrstuvwxyz/";
   int count = 0;
   int found = 0;
+  struct song_node * correctlist;
   for (count; count < 26 && !found; count++) {
     if (alphabet[count] == let) {
-      print_list((library->lib)[count]);
+      correctlist = (library->lib)[count];
       found = 1;
     }
   }
   if (!found) {
-    print_list((library->lib)[26]);
+    correctlist = (library->lib)[26];
   }
+  print_list(correctlist);
+
+}
+
+void print_artist_from_songnode(struct song_node * front, char * songartist) {
+
+  if (!strcmp(front->song_artist, songartist)) {
+    print_struct(front);
+  }
+  while (front->next) {
+    front = front->next;
+    if (!strcmp(front->song_artist, songartist)) {
+      print_struct(front);
+    }
+  }
+  printf("\n");
+
+}
+
+void print_artist(struct song_library * library, char * songartist) {
+
+  char * alphabet = "abcdefghijklmnopqrstuvwxyz/";
+  int count = 0;
+  char targetletter = songartist[0];
+  int found = 0;
+  char letter;
+  struct song_node * correctlist;
+  for (count; count < 26 && !found; count++) {
+    if (alphabet[count] == targetletter) {
+      correctlist = ((library->lib)[count]);
+      found = 1;
+    }
+  }
+  if (!found) {
+    correctlist = ((library->lib)[26]);
+  }
+  print_artist_from_songnode(correctlist, songartist);
 
 }
 
