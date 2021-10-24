@@ -17,3 +17,7 @@ void print_artist_from_songnode(struct song_node * front, char * songartist);
 void print_artist(struct song_library * library, char * songartist);
 
 void print_library(struct song_library * library);
+
+void shuffle_songs(struct song_library * library);
+
+struct song_node * remove_song(struct song_library * library, struct song_node * node);

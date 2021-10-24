@@ -22,12 +22,20 @@ int main(){
   print_letter(library, 'r');
   print_artist(library, "radiohead");
   print_library(library);
+  shuffle_songs(library);
+  remove_song(library, g);
+  print_letter(library, 'r');
+  // clearall(library);
+  // print_library(library);
+
+  // insert_song(library, a);
   // insert_song(library, b);
   // insert_song(library, c);
   // insert_song(library, d);
   // insert_song(library, e);
   // insert_song(library, f);
   // insert_song(library, g);
+  // insert_song(library, h);
 
   return 0;
 }

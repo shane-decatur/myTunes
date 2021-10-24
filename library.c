@@ -83,6 +83,7 @@ void print_letter(struct song_library * library, char let) {
   if (!found) {
     correctlist = (library->lib)[26];
   }
+  printf("letter: %c ", let);
   print_list(correctlist);
 
 }
@@ -119,6 +120,7 @@ void print_artist(struct song_library * library, char * songartist) {
   if (!found) {
     correctlist = ((library->lib)[26]);
   }
+  printf("artist: %s ", songartist);
   print_artist_from_songnode(correctlist, songartist);
 
 }
@@ -131,6 +133,49 @@ void print_library(struct song_library * library) {
     printf("letter: %c ", alphabet[count]);
     print_list((library->lib)[count]);
   }
+
+}
+
+void shuffle_songs(struct song_library * library) {
+
+  int count = 0;
+  for (count; count < 5; count++) {
+    int rand_num = rand() % 27;
+    printf("%d ", rand_num);
+    print_struct(find_randomsong((library->lib)[rand_num]));
+  }
+
+}
+
+struct song_node * remove_song(struct song_library * library, struct song_node * node) {
+
+  char * alphabet = "abcdefghijklmnopqrstuvwxyz/";
+  char targetletter = (node->song_artist)[0];
+  struct song_node * rightnode;
+  int count = 0;
+  char letter;
+  int found = 0;
+  for (count; count < 26 && !found; count++) {
+    letter = alphabet[count];
+    if (letter == targetletter) {
+      rightnode = (library->lib)[count];
+      found = 1;
+    }
+  }
+  if (!found) {
+    rightnode = (library->lib)[26];
+  }
+  return remove_node(rightnode, node->song_artist, node->song_name);
+
+}
+
+struct song_node * clearall(struct song_library * library) {
+
+  int count = 0;
+  for (count; count < 27; count++) {
+    free_list((library->lib)[count]);
+  }
+  // return (library->lib)[count];
 
 }
 

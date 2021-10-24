@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 struct song_node {
   char song_name[100];
@@ -45,6 +46,9 @@ struct song_node * greater_song_node(struct song_node * node1, struct song_node 
 
 struct song_node * insert_order(struct song_node * front, struct song_node * node) {
 
+  if (!front) {
+    return node;
+  }
 	struct song_node * ret = front;
 	struct song_node * tempnext;
 	if (greater_song_node(front, node) == front) {
@@ -72,7 +76,8 @@ struct song_node * insert_order(struct song_node * front, struct song_node * nod
 }
 
 void print_struct(struct song_node * s){
-  if (s->song_artist && s->song_name) {
+  if (!s) {}
+  else {
     printf("{%s, %s}\t",s->song_artist,s->song_name);
   }
 }
@@ -128,18 +133,11 @@ struct song_node * find_randomsong(struct song_node * front) {
 
   int max_size = size(front);
   int rand_num = rand() % max_size;
-  int count = 0;
-  struct song_node * ret = front;
-  for (count=0; front->next && count < max_size; count++) {
-    if (count == rand_num) {
-      ret = front;
-      break;
-    }
-    else {
-      front = front->next;
-    }
+  while (rand_num) {
+    front = front->next;
+    rand_num--;
   }
-  return ret;
+  return front;
 
 }
 
