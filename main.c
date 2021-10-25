@@ -15,6 +15,7 @@ int main(){
   struct song_node *f = make("time", "pink floyd");
   struct song_node *g = make("street spirit (fade out)","radiohead");
   struct song_node *h = make("tempral", "rhino rexes");
+  struct song_node *x = make("hazard duty pay","jpegmafia");
 
   insert_song(library, a);
   insert_song(library, b);
@@ -24,6 +25,20 @@ int main(){
   insert_song(library, f);
   insert_song(library, g);
   insert_song(library, h);
+  insert_song(library, x);
+
+  struct song_node * i = make("money machine","100 gecs");
+  struct song_node * j = make("stupid horse","100 gecs");
+  struct song_node * k = make("gosha", "$not");
+  struct song_node * l = make("guilty conscience","070 shake");
+
+  insert_song(library, i);
+  insert_song(library, j);
+  insert_song(library, k);
+  insert_song(library, l);
+
+
+
 
   printf("\n");
   printf("-------------------------------------------\n");
@@ -45,6 +60,9 @@ int main(){
   printf("Finding songs under Letter: R\n");
   print_letter(library, 'r');
   printf("-------------------------------------------\n");
+  printf("Finding songs under Letter: misc\n");
+  print_letter(library,'{');
+  printf("-------------------------------------------\n");
   printf("Finding songs under Artist: AC/DC\n");
   print_artist(library, "ac/dc");
   printf("\n");
@@ -59,7 +77,7 @@ int main(){
   printf("All of the library: \n");
   print_library(library);
   printf("-------------------------------------------\n");
-  
+
   struct song_node * list = make("The World Stands Still", "Biley Renner");
   printf("\n");
   print_list(list);
@@ -93,6 +111,10 @@ int main(){
   printf("\n");
   print_struct(rando);
   printf("\n");
+
+  printf("\n");
+
+  print_library(library);
 
   return 0;
 }

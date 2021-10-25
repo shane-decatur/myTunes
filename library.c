@@ -29,7 +29,7 @@ void insert_song(struct song_node ** main_lib, struct song_node * node) {
     main_lib[targetletter-97] = insert_order(main_lib[targetletter-97], node);
   }
   else {
-    main_lib[targetletter-65] = insert_order(main_lib[targetletter-65], node);
+    main_lib[26] = insert_order(main_lib[26], node);
   }
 
 }
@@ -87,11 +87,15 @@ void print_artist(struct song_node ** main_lib, char * artist) {
 void print_library(struct song_node ** main_lib) {
 
   int count = 0;
-  for (count = 0; count < 27; count++) {
+  for (count = 0; count < 26; count++) {
     if (main_lib[count]) {
       printf("letter %c: ", count + 97);
       print_list(main_lib[count]);
     }
+  }
+  if (main_lib[26]){
+    printf("letter misc: ");
+    print_list(main_lib[26]);
   }
 }
 
