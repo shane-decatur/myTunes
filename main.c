@@ -62,7 +62,13 @@ int main(){
   printf("-------------------------------------------\n");
   printf("Finding songs under Letter: misc\n");
   print_letter(library,'{');
+  printf("-------------------------------------------\n");
+  printf("Finding songs with Title: money machine and Artist: 100 gecs\n");
   print_struct(search_song(library, "money machine","100 gecs"));
+  printf("\n");
+  printf("-------------------------------------------\n");
+  printf("Finding songs under Artist: 100 gecs\n");
+  print_artist(library, "100 gecs");
   printf("\n");
   printf("-------------------------------------------\n");
   printf("Finding songs under Artist: AC/DC\n");
@@ -115,6 +121,8 @@ int main(){
   printf("\n");
 
   printf("\n");
+
+  // print_struct(search_song(library,"big ol fart","daddy"));
 
   print_library(library);
 

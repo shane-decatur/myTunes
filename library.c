@@ -67,10 +67,13 @@ void print_letter(struct song_node ** main_lib, char letter) {
 void print_artist(struct song_node ** main_lib, char * artist) {
 
   char targetletter = artist[0];
+  struct song_node * correctlist;
   if (targetletter < 97) {
-    targetletter += 32;
+    correctlist = main_lib[26];
   }
-  struct song_node * correctlist = main_lib[targetletter-97];
+  else{
+    correctlist = main_lib[targetletter-97];
+  }
   printf("%s songs: ", artist);
   if (!strcmp(correctlist->song_artist, artist)) {
     print_struct(correctlist);
