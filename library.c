@@ -22,7 +22,7 @@ struct song_node ** make_lib() {
 
 }
 
-struct song_node ** insert_song(struct song_node ** main_lib, struct song_node * node) {
+void insert_song(struct song_node ** main_lib, struct song_node * node) {
 
   char targetletter = (node->song_artist)[0];
   if (targetletter >= 97) {
@@ -93,7 +93,6 @@ void print_library(struct song_node ** main_lib) {
       print_list(main_lib[count]);
     }
   }
-
 }
 
 void shuffle_songs(struct song_node ** main_lib) {

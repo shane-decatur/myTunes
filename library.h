@@ -2,7 +2,7 @@ struct song_node;
 
 struct song_node ** make_lib();
 
-struct song_node ** insert_song(struct song_node ** main_lib, struct song_node * node);
+void insert_song(struct song_node ** main_lib, struct song_node * node);
 
 struct song_node * search_song(struct song_node ** main_lib, char * song, char * artist);
 
