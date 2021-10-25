@@ -38,7 +38,7 @@ struct song_node * search_song(struct song_node ** main_lib, char * song, char *
 
   char targetletter = artist[0];
   if (targetletter < 97) {
-    targetletter += 32;
+    return find_song(main_lib[26],song,artist);
   }
   return find_song(main_lib[targetletter - 97], song, artist);
 
@@ -48,7 +48,7 @@ struct song_node * search_artist(struct song_node ** main_lib, char * artist) {
 
   char targetletter = artist[0];
   if (targetletter < 97) {
-    targetletter += 32;
+    return find_firstsong(main_lib[26],artist);
   }
   return find_firstsong(main_lib[targetletter-97], artist);
 
